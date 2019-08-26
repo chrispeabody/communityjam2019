@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class Beat {
-	protected string _words;
+	[SerializeField] protected string _words;
 
 	public Beat (string words) {
 		_words = words;
@@ -13,8 +14,9 @@ public class Beat {
 	public void setWords(string words) {_words = words;}
 }
 
+[System.Serializable]
 public class Choice : Beat {
-	private Page _link;
+	[SerializeField] private Page _link;
 
 	public Choice (string words, Page link) : base(words) {
 		_link = link;

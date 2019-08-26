@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(menuName = "Page")]
 public class Page : ScriptableObject {
-	List<Beat> _beats;
-	List<Choice> _choices;
+	[SerializeField] public List<Beat> beats;
+	[SerializeField] public List<Choice> choices;
 }
