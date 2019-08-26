@@ -13,11 +13,9 @@ public class CanvasController : MonoBehaviour {
     public Page startingPage;
 
     // Visual components
+    private List<GameObject> _optionGOList = new List<GameObject>();
+    private List<Text> _optionList = new List<Text>();
 	private Text _words;
-	private Text _option1;
-	private Text _option2;
-	private Text _option3;
-	private Text _option4;
     private Page _page;
 
     // Other
@@ -27,10 +25,16 @@ public class CanvasController : MonoBehaviour {
     // Start is called before the first frame update
     void Start() {
         _words = _mainTextbox.GetComponent<Text>();
-        _option1 = _option1Button.GetComponentInChildren<Text>();
-        _option2 = _option2Button.GetComponentInChildren<Text>();
-        _option3 = _option3Button.GetComponentInChildren<Text>();
-        _option4 = _option4Button.GetComponentInChildren<Text>();
+
+        // It's ugly, I know -cp
+        _optionGOList.Add(_option1Button);
+        _optionGOList.Add(_option2Button);
+        _optionGOList.Add(_option3Button);
+        _optionGOList.Add(_option4Button);
+
+        foreach (GameObject go in _optionGOList) {
+        	_optionList.Add(go.GetComponentInChildren<Text>());
+        }
 
         updatePage(startingPage);
     }
@@ -38,8 +42,6 @@ public class CanvasController : MonoBehaviour {
     // Update is called once per frame
     void Update() {
         if (Input.anyKeyDown) {
-        	Debug.Log("current: "+_currentBeat);
-        	Debug.Log("final: "+_finalBeat);
         	if (_currentBeat < _finalBeat) {
         		nextBeat();
         	}
@@ -53,6 +55,10 @@ public class CanvasController : MonoBehaviour {
     	_currentBeat = 0;
     	_finalBeat = _page.beats.Count-1;
 
+    	for (int i = 0; i < _page.choices.Count; i++) {
+    		_optionList[i].text = _page.choices[i].getWords();
+    	}
+
     	checkDisplayButtons();
     }
 
@@ -65,15 +71,23 @@ public class CanvasController : MonoBehaviour {
 
     private void checkDisplayButtons() {
     	if (_currentBeat == _finalBeat) {
-    		_option1Button.SetActive(true);
-    		_option2Button.SetActive(true);
-    		_option3Button.SetActive(true);
-    		_option4Button.SetActive(true);
+    		for (int i = 0; i < _page.choices.Count; i++) {
+    			_optionGOList[i].SetActive(true);
+    		}
+    		for (int i = _page.choices.Count; i < 4; i++) {
+    			_optionGOList[i].SetActive(false);
+    		}
     	} else {
-    		_option1Button.SetActive(false);
-    		_option2Button.SetActive(false);
-    		_option3Button.SetActive(false);
-    		_option4Button.SetActive(false);
+    		foreach (GameObject button in _optionGOList) {
+    			button.SetActive(false);
+    		}
+    	}
+    }
+
+    public void selectOption(int selection) {
+    	Page nextPage = _page.choices[selection].getLink();
+    	if (nextPage != null) {
+    		updatePage(nextPage);
     	}
     }
 
