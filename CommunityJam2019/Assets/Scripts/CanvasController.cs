@@ -4,13 +4,17 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class CanvasController : MonoBehaviour {
-    // GameObjects
+    // GameObjects & public stuff
     public GameObject _mainTextbox;
     public GameObject _option1Button;
     public GameObject _option2Button;
     public GameObject _option3Button;
     public GameObject _option4Button;
+    public GameObject _soundManagerGO;
     public Page startingPage;
+    public SoundCollection _selectionSound;
+    public SoundCollection _newBeatSound;
+
 
     // Visual components
     private List<GameObject> _optionGOList = new List<GameObject>();
@@ -19,6 +23,7 @@ public class CanvasController : MonoBehaviour {
     private Page _page;
 
     // Other
+    private SoundManager _soundManager;
     private int _currentBeat;
     private int _finalBeat;
 
@@ -35,6 +40,8 @@ public class CanvasController : MonoBehaviour {
         foreach (GameObject go in _optionGOList) {
         	_optionList.Add(go.GetComponentInChildren<Text>());
         }
+
+        _soundManager = _soundManagerGO.GetComponent<SoundManager>();
 
         updatePage(startingPage);
     }
@@ -65,6 +72,7 @@ public class CanvasController : MonoBehaviour {
     private void nextBeat () {
     	_currentBeat++;
     	_words.text = _page.beats[_currentBeat].getWords();
+    	_soundManager.playSoundCollection(_newBeatSound);
 
     	checkDisplayButtons();
     }
@@ -87,8 +95,14 @@ public class CanvasController : MonoBehaviour {
     public void selectOption(int selection) {
     	Page nextPage = _page.choices[selection].getLink();
     	if (nextPage != null) {
+    		_soundManager.playSoundCollection(_selectionSound);
     		updatePage(nextPage);
     	}
+    }
+
+    // FOR TESTING
+    public void returnToStart() {
+    	updatePage(startingPage);
     }
 
     public Page getPage() {return _page;}

@@ -10,5 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cc11c79e905d1854faf7ee7030929cdc, type: 3}
-  m_Name: testpage
+  m_Name: page1test
   m_EditorClassIdentifier: 
+  beats:
+  - _words: '...'
+  - _words: Ah, I see you're awake!
+  - _words: Did you have any interesting dreams?
+  choices:
+  - _words: What? No.
+    _link: {fileID: 11400000, guid: 2281296aa07ea9c4697d9928cc62417d, type: 2}
+  - _words: Well there was one.
+    _link: {fileID: 11400000, guid: 07efa431d9579494c98a5e8155732006, type: 2}

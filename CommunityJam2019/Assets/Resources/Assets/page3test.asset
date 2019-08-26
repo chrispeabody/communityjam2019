@@ -12,5 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc11c79e905d1854faf7ee7030929cdc, type: 3}
   m_Name: page3test
   m_EditorClassIdentifier: 
-  beats: []
-  choices: []
+  beats:
+  - _words: Oh?
+  - _words: Do tell!
+  choices:
+  - _words: Well there was this unicorn...
+    _link: {fileID: 0}
+  - _words: It was about you, actually...
+    _link: {fileID: 0}
+  - _words: You know those dreams where you feel like you're falling?
+    _link: {fileID: 0}
+  - _words: I'd rather not talk about it.
+    _link: {fileID: 0}
