@@ -60,11 +60,7 @@ public class CanvasController : MonoBehaviour {
         	}
         }
 
-        if (_isLightning)
-        {
-            lightningStrike();
-            _timeForFlash -= Time.deltaTime;
-        }
+        handleLightning();
     }
 
     private void updatePage (Page page) {
@@ -85,6 +81,8 @@ public class CanvasController : MonoBehaviour {
     	_currentBeat++;
     	_words.text = _page.beats[_currentBeat].getWords();
     	_soundManager.playSoundCollection(_newBeatSound);
+
+    	_isLightning = true;
 
     	checkDisplayButtons();
     }
@@ -112,26 +110,35 @@ public class CanvasController : MonoBehaviour {
     	}
     }
     //lightningStrike causes the background chosen (variable lightningBackground) to flash bright and then dim
-    public void lightningStrike() {
-        Color _brightFlash = new Color(1, 1, 1, 1);
-        Color _halfFlash = new Color(0.5f, 0.5f, 0.5f, 1);
-        Color _noFlash = new Color(0, 0, 0, 1);
-        _soundManager.playSoundCollection(_thunderSounds);
-        _lightningBackground.color = _brightFlash;
-        if(_timeForFlash <= 0)
+    public void handleLightning() {
+        
+    	if (_isLightning)
         {
-            _lightningBackground.color = _noFlash;
-        }
-        if(_timeForFlash <= -0.05f)
-        {
-            _lightningBackground.color = _halfFlash;
-        }
-        if (_timeForFlash <= -0.2f)
-        {
-            _lightningBackground.color = _noFlash;
-            _isLightning = false;
-            _timeForFlash = 0.1f;
-        }
+            
+            _timeForFlash -= Time.deltaTime;
+        
+
+	        if (_thunderSounds != null) {
+	        	_soundManager.playSoundCollection(_thunderSounds);
+	        }
+
+	        _lightningBackground.color = new Color(1, 1, 1, 1);
+	        if(_timeForFlash <= 0)
+	        {
+	            _lightningBackground.color = new Color(0, 0, 0, 1);
+	        }
+	        if(_timeForFlash <= -0.05f)
+	        {
+	            _lightningBackground.color = new Color(0.5f, 0.5f, 0.5f, 1);
+	        }
+	        if (_timeForFlash <= -0.2f)
+	        {
+	            _lightningBackground.color = new Color(0, 0, 0, 1);
+	            _isLightning = false;
+	            _timeForFlash = 0.1f;
+	        }
+
+    	}
     }
 
     // FOR TESTING
