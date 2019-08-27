@@ -26,6 +26,12 @@ public class CanvasController : MonoBehaviour {
     private SoundManager _soundManager;
     private int _currentBeat;
     private int _finalBeat;
+    
+    //Things for the lightning flash
+    public RawImage _lightningBackground;
+    public bool _isLightning = false;
+    private float _timeForFlash = 0.1f;
+    public SoundCollection _thunderSounds;
 
     // Start is called before the first frame update
     void Start() {
@@ -52,6 +58,12 @@ public class CanvasController : MonoBehaviour {
         	if (_currentBeat < _finalBeat) {
         		nextBeat();
         	}
+        }
+
+        if (_isLightning)
+        {
+            lightningStrike();
+            _timeForFlash -= Time.deltaTime;
         }
     }
 
@@ -98,6 +110,28 @@ public class CanvasController : MonoBehaviour {
     		_soundManager.playSoundCollection(_selectionSound);
     		updatePage(nextPage);
     	}
+    }
+    //lightningStrike causes the background chosen (variable lightningBackground) to flash bright and then dim
+    public void lightningStrike() {
+        Color _brightFlash = new Color(1, 1, 1, 1);
+        Color _halfFlash = new Color(0.5f, 0.5f, 0.5f, 1);
+        Color _noFlash = new Color(0, 0, 0, 1);
+        _soundManager.playSoundCollection(_thunderSounds);
+        _lightningBackground.color = _brightFlash;
+        if(_timeForFlash <= 0)
+        {
+            _lightningBackground.color = _noFlash;
+        }
+        if(_timeForFlash <= -0.05f)
+        {
+            _lightningBackground.color = _halfFlash;
+        }
+        if (_timeForFlash <= -0.2f)
+        {
+            _lightningBackground.color = _noFlash;
+            _isLightning = false;
+            _timeForFlash = 0.1f;
+        }
     }
 
     // FOR TESTING
