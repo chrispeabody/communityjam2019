@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc4675b60acb02845a53727f9113957a, type: 3}
   m_Name: clicks
   m_EditorClassIdentifier: 
-  sounds: []
+  sounds:
+  - {fileID: 8300000, guid: 30067f4856e905f4690685ba6ce018bf, type: 3}
+  - {fileID: 8300000, guid: f21d03109fce57d439cea725edade6d3, type: 3}
   minPitch: 0.9
   maxPitch: 1.1
+  volume: 1

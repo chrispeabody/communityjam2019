@@ -12,5 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc4675b60acb02845a53727f9113957a, type: 3}
   m_Name: pageTurn
   m_EditorClassIdentifier: 
+  sounds:
+  - {fileID: 8300000, guid: 7bb8512eae8affa4485ccbe167248240, type: 3}
+  - {fileID: 8300000, guid: 4ff67e3cf5af4e54fbd7ac652519f06d, type: 3}
+  - {fileID: 8300000, guid: 9cb58a2a8a4aa1f479a9f2c1f9691b50, type: 3}
   minPitch: 0.9
   maxPitch: 1.1
+  volume: 1
