@@ -29,6 +29,7 @@ public class CanvasController : MonoBehaviour {
     
     //Things for the lightning flash
     public RawImage _lightningBackground;
+    public RawImage _rainBackground;
     public bool _isLightning = false;
     private float _timeForFlash = 0.1f;
     public SoundCollection _thunderSounds;
@@ -123,18 +124,24 @@ public class CanvasController : MonoBehaviour {
 	        }
 
 	        _lightningBackground.color = new Color(1, 1, 1, 1);
-	        if(_timeForFlash <= 0)
+            _rainBackground.color = new Color(1, 1, 1, 1);
+            if (_timeForFlash <= 0)
 	        {
 	            _lightningBackground.color = new Color(0, 0, 0, 1);
-	        }
-	        if(_timeForFlash <= -0.05f)
+                _rainBackground.color = new Color(0, 0, 0, 1);
+
+            }
+            if (_timeForFlash <= -0.05f)
 	        {
 	            _lightningBackground.color = new Color(0.5f, 0.5f, 0.5f, 1);
-	        }
-	        if (_timeForFlash <= -0.2f)
+                _rainBackground.color = new Color(0.5f, 0.5f, 0.5f, 1);
+
+            }
+            if (_timeForFlash <= -0.2f)
 	        {
-	            _lightningBackground.color = new Color(0, 0, 0, 1);
-	            _isLightning = false;
+	            _lightningBackground.color = new Color(0.15f, 0.15f, 0.15f, 1);
+                _rainBackground.color = new Color(0.2f, 0.2f, 0.2f, 1);
+                _isLightning = false;
 	            _timeForFlash = 0.1f;
 	        }
 
