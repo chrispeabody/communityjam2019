@@ -12,7 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc4675b60acb02845a53727f9113957a, type: 3}
   m_Name: thunder
   m_EditorClassIdentifier: 
-  sounds: []
-  minPitch: 0.9
-  maxPitch: 1.1
+  sounds:
+  - {fileID: 8300000, guid: 29cb2711c58444f479ad507afc3b9681, type: 3}
+  - {fileID: 8300000, guid: 470ef3ae355951d4ab3bbc66ea49fcea, type: 3}
+  - {fileID: 8300000, guid: 5dcd12fb1fc32ca43b287aa240a2943c, type: 3}
+  - {fileID: 8300000, guid: cbea939fff5b78442b59485958c21448, type: 3}
+  - {fileID: 8300000, guid: e7cc222589d67384d87a459158857288, type: 3}
+  - {fileID: 8300000, guid: 639dd1ba38b9309499e0ee382f94aaa4, type: 3}
+  minPitch: 0.7
+  maxPitch: 1
   volume: 1

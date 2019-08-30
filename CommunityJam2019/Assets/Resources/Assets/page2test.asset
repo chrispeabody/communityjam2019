@@ -17,4 +17,18 @@ MonoBehaviour:
     _requiredMood: 0
     _requiredMoodAmount: 0
     expandInEditor: 0
-  choices: []
+  - _words: I AM VERY ANGRY!
+    _requiredMood: 1
+    _requiredMoodAmount: 2
+    expandInEditor: 0
+  choices:
+  - _words: Hah, you're angry!
+    _requiredMood: 1
+    _requiredMoodAmount: 5
+    expandInEditor: 0
+    _link: {fileID: 0}
+    _mood: 0
+    _moodMod: 0
+    _altMood: 0
+    _altMoodReq: 0
+    _altLink: {fileID: 0}

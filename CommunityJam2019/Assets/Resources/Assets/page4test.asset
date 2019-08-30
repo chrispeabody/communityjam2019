@@ -12,5 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc11c79e905d1854faf7ee7030929cdc, type: 3}
   m_Name: page4test
   m_EditorClassIdentifier: 
-  beats: []
+  beats:
+  - _words: You did it!
+    _requiredMood: 0
+    _requiredMoodAmount: 0
+    expandInEditor: 0
   choices: []
