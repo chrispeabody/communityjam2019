@@ -27,6 +27,10 @@ public class Choice : Beat {
 	[SerializeField] private Mood _mood;
 	[SerializeField] private int _moodMod;
 
+	[SerializeField] private Mood _altMood;
+	[SerializeField] private int _altMoodReq;
+	[SerializeField] private Page _altLink;
+
 	public Choice (string words, Page link) : base(words) {
 		_link = link;
 	}
@@ -37,4 +41,11 @@ public class Choice : Beat {
 	public void setMood(Mood mood) {_mood = mood;}
 	public int getMoodMod() {return _moodMod;}
 	public void setMoodMod(int moodMod) {_moodMod = moodMod;}
+
+	public Page getAltLink() {return _altLink;}
+	public void setAltLink(Page link) {_altLink = link;}
+	public Mood getAltMood() {return _altMood;}
+	public void setAltMood(Mood mood) {_altMood = mood;}
+	public int getAltMoodReq() {return _altMoodReq;}
+	public void setAltMoodReq(int altMoodReq) {_altMoodReq = altMoodReq;}
 }

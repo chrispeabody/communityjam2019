@@ -16,7 +16,9 @@ public class PageEditor : Editor {
 
     	Beat beatToRemove = null;
     	foreach(Beat beat in page.beats) {
-    		beat.expandInEditor = EditorGUILayout.Foldout(beat.expandInEditor, beat.getWords(), true);
+    		string moodStr = "";
+    		if (beat.getRequiredMood() != Mood.None) {moodStr = " ["+beat.getRequiredMood()+" "+beat.getRequiredMoodAmount()+"]";}  
+    		beat.expandInEditor = EditorGUILayout.Foldout(beat.expandInEditor, beat.getWords() + moodStr, true);
 
     		if (beat.expandInEditor) {
 	    		GUILayout.BeginHorizontal();
@@ -43,8 +45,10 @@ public class PageEditor : Editor {
     	EditorGUILayout.LabelField("Choices");
 
 		Choice choiceToRemove = null;
-    	foreach(Choice choice in page.choices) {  
-    		choice.expandInEditor = EditorGUILayout.Foldout(choice.expandInEditor, choice.getWords(), true);
+    	foreach(Choice choice in page.choices) {
+    		string moodStr = "";
+    		if (choice.getRequiredMood() != Mood.None) {moodStr = " ["+choice.getRequiredMood()+" "+choice.getRequiredMoodAmount()+"]";}  
+    		choice.expandInEditor = EditorGUILayout.Foldout(choice.expandInEditor, choice.getWords() + moodStr, true);
 
     		if (choice.expandInEditor) {
 	    		GUILayout.BeginHorizontal();
@@ -67,6 +71,12 @@ public class PageEditor : Editor {
 	    		GUILayout.EndHorizontal();
 
 	    		choice.setLink((Page) EditorGUILayout.ObjectField("Page link:", choice.getLink(), typeof(Page), false));
+
+	    		GUILayout.BeginHorizontal();
+	    		choice.setAltMood((Mood)EditorGUILayout.EnumPopup("Alt link:",choice.getAltMood()));
+	    		choice.setAltMoodReq(EditorGUILayout.IntField(choice.getAltMoodReq()));
+	    		choice.setAltLink((Page) EditorGUILayout.ObjectField(choice.getAltLink(), typeof(Page), false));
+	    		GUILayout.EndHorizontal();
 			}
     	}
     	if (choiceToRemove != null) {page.choices.Remove(choiceToRemove);}

@@ -112,6 +112,8 @@ public class CanvasController : MonoBehaviour {
 
 
     private void nextBeat () {
+        _isLightning = true;        
+
         _currentBeat++;
 
     	_words.text = _page.beats[_currentBeat].getWords();
@@ -139,7 +141,14 @@ public class CanvasController : MonoBehaviour {
 
     public void selectOption(int selection) {
         Choice choice = _page.choices[selection];
-    	Page nextPage = choice.getLink();
+    	
+        Page nextPage;
+        if (choice.getAltMood() != Mood.None && _moodTracker.getMood(choice.getAltMood()) >= choice.getAltMoodReq()) {
+            nextPage = choice.getAltLink();
+        } else {
+            nextPage = choice.getLink();
+        }
+
     	if (nextPage != null) {
             if (choice.getMood() != Mood.None) {
                 _moodTracker.addToMood(choice.getMood(),choice.getMoodMod());
@@ -180,8 +189,8 @@ public class CanvasController : MonoBehaviour {
             }
             if (_timeForFlash <= -0.2f)
 	        {
-	            _lightningBackground.color = new Color(0.15f, 0.15f, 0.15f, 1);
-                _rainBackground.color = new Color(0.2f, 0.2f, 0.2f, 1);
+	            _lightningBackground.color = new Color(0f, 0f, 0f, 1);
+                _rainBackground.color = new Color(0.05f, 0.05f, 0.05f, 1);
                 _isLightning = false;
 	            _timeForFlash = 0.1f;
 	        }
