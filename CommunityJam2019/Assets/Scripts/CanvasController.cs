@@ -26,6 +26,7 @@ public class CanvasController : MonoBehaviour {
     private SoundManager _soundManager;
     private int _currentBeat;
     private int _finalBeat;
+    private MoodTracker _moodTracker = new MoodTracker();
     
     //Things for the lightning flash
     public RawImage _lightningBackground;
@@ -65,7 +66,38 @@ public class CanvasController : MonoBehaviour {
     }
 
     private void updatePage (Page page) {
-    	_page = page;
+    	_page = page.clone();
+
+        // GET RID OF BEATS THAT WE DON'T MEET THE REQUIREMENT FOR
+        List<Beat> beatsToRemove = new List<Beat>();
+        foreach (Beat beat in _page.beats) {
+            if (beat.getRequiredMood() != Mood.None) {
+                if (_moodTracker.getMood(beat.getRequiredMood()) < beat.getRequiredMoodAmount()) {
+                    beatsToRemove.Add(beat);
+                }
+            }
+        }
+
+        foreach (Beat beat in beatsToRemove) {
+            _page.beats.Remove(beat);
+        }
+
+        // GET RID OF CHOICES THAT WE DON'T MEET THE REQUIREMENT FOR
+        List<Choice> choicesToRemove = new List<Choice>();
+        foreach (Choice choice in _page.choices) {
+            if (choice.getRequiredMood() != Mood.None) {
+                if (_moodTracker.getMood(choice.getRequiredMood()) < choice.getRequiredMoodAmount()) {
+                    choicesToRemove.Add(choice);
+                }
+            }
+        }
+
+        foreach (Choice choice in choicesToRemove) {
+            _page.choices.Remove(choice);
+        }
+
+
+        // UPDATE CURRENT DISPLAY
     	_words.text = _page.beats[0].getWords();
 
     	_currentBeat = 0;
@@ -78,12 +110,14 @@ public class CanvasController : MonoBehaviour {
     	checkDisplayButtons();
     }
 
-    private void nextBeat () {
-    	_currentBeat++;
-    	_words.text = _page.beats[_currentBeat].getWords();
-    	_soundManager.playSoundCollection(_newBeatSound);
 
-    	_isLightning = true;
+    private void nextBeat () {
+        _currentBeat++;
+
+    	_words.text = _page.beats[_currentBeat].getWords();
+        if (_newBeatSound != null) {
+    	   _soundManager.playSoundCollection(_newBeatSound);
+        }
 
     	checkDisplayButtons();
     }
@@ -104,9 +138,16 @@ public class CanvasController : MonoBehaviour {
     }
 
     public void selectOption(int selection) {
-    	Page nextPage = _page.choices[selection].getLink();
+        Choice choice = _page.choices[selection];
+    	Page nextPage = choice.getLink();
     	if (nextPage != null) {
-    		_soundManager.playSoundCollection(_selectionSound);
+            if (choice.getMood() != Mood.None) {
+                _moodTracker.addToMood(choice.getMood(),choice.getMoodMod());
+            }
+
+            if (_selectionSound != null) {
+    		  _soundManager.playSoundCollection(_selectionSound);
+            }
     		updatePage(nextPage);
     	}
     }

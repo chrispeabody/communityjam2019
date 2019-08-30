@@ -14,13 +14,39 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   beats:
   - _words: Oh?
+    _requiredMood: 0
+    _requiredMoodAmount: 0
+    expandInEditor: 0
   - _words: Do tell!
+    _requiredMood: 0
+    _requiredMoodAmount: 0
+    expandInEditor: 0
   choices:
   - _words: Well there was this unicorn...
+    _requiredMood: 0
+    _requiredMoodAmount: 0
+    expandInEditor: 0
     _link: {fileID: 0}
+    _mood: 0
+    _moodMod: 0
   - _words: It was about you, actually...
-    _link: {fileID: 0}
+    _requiredMood: 0
+    _requiredMoodAmount: 0
+    expandInEditor: 0
+    _link: {fileID: 11400000, guid: e106969967a663143be87c590554a74c, type: 2}
+    _mood: 2
+    _moodMod: 2
   - _words: You know those dreams where you feel like you're falling?
+    _requiredMood: 0
+    _requiredMoodAmount: 0
+    expandInEditor: 0
     _link: {fileID: 0}
+    _mood: 0
+    _moodMod: 0
   - _words: I'd rather not talk about it.
+    _requiredMood: 0
+    _requiredMoodAmount: 0
+    expandInEditor: 0
     _link: {fileID: 0}
+    _mood: 0
+    _moodMod: 0

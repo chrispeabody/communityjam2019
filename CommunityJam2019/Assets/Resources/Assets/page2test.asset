@@ -14,4 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   beats:
   - _words: Well, that's a shame, I suppose.
+    _requiredMood: 0
+    _requiredMoodAmount: 0
+    expandInEditor: 0
   choices: []

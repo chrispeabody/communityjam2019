@@ -6,4 +6,8 @@ using UnityEngine;
 public class Page : ScriptableObject {
 	[SerializeField] public List<Beat> beats = new List<Beat>();
 	[SerializeField] public List<Choice> choices = new List<Choice>();
+
+	public Page clone() {
+		return Instantiate(this);
+	} // Hmm... cheap.
 }
