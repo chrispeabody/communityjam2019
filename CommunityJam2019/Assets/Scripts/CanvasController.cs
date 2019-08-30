@@ -242,6 +242,11 @@ public class CanvasController : MonoBehaviour {
         yield return new WaitForSeconds(2);
     }
 
+    public void quitGame()
+    {
+        Application.Quit();
+    }
+
     // FOR TESTING
     public void returnToStart() {
     	updatePage(startingPage);
