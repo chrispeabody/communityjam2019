@@ -35,6 +35,7 @@ public class CanvasController : MonoBehaviour {
     private float _curTimeForFlash = 0.4f;
     private float _totTimeForFlash = 0.4f;
     private Color _lastColor;
+    private float _doubleStrikeBuffer = 0f;
     public SoundCollection _thunderSounds;
 
     // Start is called before the first frame update
@@ -62,6 +63,14 @@ public class CanvasController : MonoBehaviour {
         	if (_currentBeat < _finalBeat) {
         		nextBeat();
         	}
+        }
+
+        float lightningChance = Random.Range(0f,1f);
+        if (lightningChance < 0.002f && _doubleStrikeBuffer <= 0f) {
+            _isLightning = true;
+            _doubleStrikeBuffer = 4f;
+        } else if (_doubleStrikeBuffer > 0f) {
+            _doubleStrikeBuffer -= Time.deltaTime;
         }
 
         handleLightning();
@@ -113,9 +122,7 @@ public class CanvasController : MonoBehaviour {
     }
 
 
-    private void nextBeat () {
-        _isLightning = true;        
-
+    private void nextBeat () {      
         _currentBeat++;
 
     	_words.text = _page.beats[_currentBeat].getWords();
@@ -173,14 +180,13 @@ public class CanvasController : MonoBehaviour {
 
 	        if (_thunderSounds != null) {
 	        	_soundManager.playSoundCollection(_thunderSounds);
-                _soundManager.playSoundCollection(_thunderSounds);
 	        }
     
             float sameColorChance = Random.Range(0f,1f);
 
             if (sameColorChance < 0.3 || _lastColor == null) {
                 float timeFraction = _curTimeForFlash / _totTimeForFlash;
-                float lightFraction = Random.Range(0,timeFraction);
+                float lightFraction = Random.Range(timeFraction/2,timeFraction);
 
                 _lastColor = new Color(lightFraction, lightFraction, lightFraction, 1);
 
@@ -192,10 +198,10 @@ public class CanvasController : MonoBehaviour {
             }
 
             if (_curTimeForFlash <= 0) {
-                _lightningBackground.color = new Color(0f, 0f, 0f, 1);
+                _lightningBackground.color = new Color(0.1f, 0.1f, 0.1f, 1);
                 _rainBackground.color = new Color(0.05f, 0.05f, 0.05f, 1);
                 _isLightning = false;
-                _totTimeForFlash = Random.Range(0.3f, 0.6f);
+                _totTimeForFlash = Random.Range(0.5f, 0.8f);
                 _curTimeForFlash = _totTimeForFlash;
             }
     	}
