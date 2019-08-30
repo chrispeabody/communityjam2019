@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class CanvasController : MonoBehaviour {
     // GameObjects & public stuff
     public GameObject _mainTextbox;
+    public GameObject _moodTextBox;
     public GameObject _option1Button;
     public GameObject _option2Button;
     public GameObject _option3Button;
@@ -21,6 +22,7 @@ public class CanvasController : MonoBehaviour {
     private List<Text> _optionList = new List<Text>();
 	private Text _words;
     private Page _page;
+    private Text _moodWords;
 
     // Other
     private SoundManager _soundManager;
@@ -47,6 +49,8 @@ public class CanvasController : MonoBehaviour {
         _optionGOList.Add(_option2Button);
         _optionGOList.Add(_option3Button);
         _optionGOList.Add(_option4Button);
+
+        _moodWords = _moodTextBox.GetComponent<Text>();
 
         foreach (GameObject go in _optionGOList) {
         	_optionList.Add(go.GetComponentInChildren<Text>());
@@ -161,6 +165,8 @@ public class CanvasController : MonoBehaviour {
     	if (nextPage != null) {
             if (choice.getMood() != Mood.None) {
                 _moodTracker.addToMood(choice.getMood(),choice.getMoodMod());
+                fadeTextInOut();
+                _moodWords.text = "+" + choice.getMoodMod() + " " + choice.getMood();
             }
 
             if (_selectionSound != null) {
@@ -205,6 +211,35 @@ public class CanvasController : MonoBehaviour {
                 _curTimeForFlash = _totTimeForFlash;
             }
     	}
+    }
+
+    public void fadeTextInOut()
+    {
+        StartCoroutine(fadeRoutine());
+    }
+    private IEnumerator fadeRoutine()
+    {
+        Color noColor = Color.clear;
+        Color fullColor = new Color(1, 0, 0, 1);
+        Vector3 normalPos = _moodTextBox.transform.position;
+        for (float timePassed = 0.01f; timePassed < 1; timePassed += Time.deltaTime)
+        {
+            _moodWords.color = Color.Lerp(noColor, Color.red, Mathf.Min(1, timePassed / 1));
+            yield return null;
+        }
+        yield return new WaitForSeconds(2);
+        for (float timePassed = 0.01f; timePassed < 1; timePassed += Time.deltaTime)
+        {
+            _moodWords.color = Color.Lerp(fullColor, Color.clear, Mathf.Min(1, timePassed / 1));
+            _moodTextBox.transform.Translate(Vector3.up);
+            yield return null;
+        }
+        _moodTextBox.transform.position = normalPos;
+    }
+
+    private IEnumerator waitFade()
+    {
+        yield return new WaitForSeconds(2);
     }
 
     // FOR TESTING

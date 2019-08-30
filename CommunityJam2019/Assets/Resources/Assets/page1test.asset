@@ -29,14 +29,20 @@ MonoBehaviour:
   - _words: What? No.
     _requiredMood: 0
     _requiredMoodAmount: 0
-    expandInEditor: 0
+    expandInEditor: 1
     _link: {fileID: 11400000, guid: 2281296aa07ea9c4697d9928cc62417d, type: 2}
     _mood: 1
     _moodMod: 5
+    _altMood: 0
+    _altMoodReq: 0
+    _altLink: {fileID: 0}
   - _words: Well there was one.
     _requiredMood: 0
     _requiredMoodAmount: 0
-    expandInEditor: 0
+    expandInEditor: 1
     _link: {fileID: 11400000, guid: 07efa431d9579494c98a5e8155732006, type: 2}
     _mood: 0
     _moodMod: 0
+    _altMood: 0
+    _altMoodReq: 0
+    _altLink: {fileID: 0}
