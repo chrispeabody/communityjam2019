@@ -10,23 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cc11c79e905d1854faf7ee7030929cdc, type: 3}
-  m_Name: page2test
+  m_Name: Making me sick
   m_EditorClassIdentifier: 
   beats:
-  - _words: Well, that's a shame, I suppose.
+  - _words: '"Well hang in there. The black box should be in the storage units just
+      outside of the cockpit. Check the bottom drawer."'
     _requiredMood: 0
     _requiredMoodAmount: 0
-    expandInEditor: 0
-  - _words: I AM VERY ANGRY!
-    _requiredMood: 1
-    _requiredMoodAmount: 2
-    expandInEditor: 0
+    _titleSize: 0
+    expandInEditor: 1
   choices:
-  - _words: Hah, you're angry!
-    _requiredMood: 1
-    _requiredMoodAmount: 5
-    expandInEditor: 0
-    _link: {fileID: 0}
+  - _words: Head to the cockpit.
+    _requiredMood: 0
+    _requiredMoodAmount: 0
+    _titleSize: 0
+    expandInEditor: 1
+    _link: {fileID: 11400000, guid: cc4499d40c100dd408215e8cc06bd32c, type: 2}
     _mood: 0
     _moodMod: 0
     _altMood: 0

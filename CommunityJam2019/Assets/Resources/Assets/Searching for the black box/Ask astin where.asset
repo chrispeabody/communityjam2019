@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc11c79e905d1854faf7ee7030929cdc, type: 3}
+  m_Name: Ask astin where
+  m_EditorClassIdentifier: 
+  beats:
+  - _words: Realizing you have no idea where this thing we be, you pipe up, "Where
+      do I find this box?"
+    _requiredMood: 0
+    _requiredMoodAmount: 0
+    _titleSize: 0
+    expandInEditor: 1
+  - _words: '"That''s a great question."'
+    _requiredMood: 2
+    _requiredMoodAmount: 1
+    _titleSize: 0
+    expandInEditor: 1
+  - _words: '"You''ll want to look at the storage compartments connect to the cockpit,"
+      it sounded like he knew you would ask.'
+    _requiredMood: 0
+    _requiredMoodAmount: 0
+    _titleSize: 0
+    expandInEditor: 1
+  - _words: '"There should be some drawers there. Check the bottom drawer."'
+    _requiredMood: 0
+    _requiredMoodAmount: 0
+    _titleSize: 0
+    expandInEditor: 1
+  choices:
+  - _words: Proceed to the cockpick.
+    _requiredMood: 0
+    _requiredMoodAmount: 0
+    _titleSize: 0
+    expandInEditor: 1
+    _link: {fileID: 11400000, guid: cc4499d40c100dd408215e8cc06bd32c, type: 2}
+    _mood: 0
+    _moodMod: 0
+    _altMood: 0
+    _altMoodReq: 0
+    _altLink: {fileID: 0}
+  - _words: Make a detour to the cabin.
+    _requiredMood: 0
+    _requiredMoodAmount: 0
+    _titleSize: 0
+    expandInEditor: 1
+    _link: {fileID: 11400000, guid: 8804d9b3cdad03949aff825596b4ba36, type: 2}
+    _mood: 0
+    _moodMod: 0
+    _altMood: 0
+    _altMoodReq: 0
+    _altLink: {fileID: 0}

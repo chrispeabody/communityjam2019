@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc11c79e905d1854faf7ee7030929cdc, type: 3}
+  m_Name: Strange device
+  m_EditorClassIdentifier: 
+  beats:
+  - _words: '"A strange device? If it has a little switch labeled RELEASE, then you''ve
+      got the right black box."'
+    _requiredMood: 0
+    _requiredMoodAmount: 0
+    _titleSize: 0
+    expandInEditor: 1
+  - _words: '"I know, it looks a bit menacing. But nowadays these things are built
+      to be heavy duty."'
+    _requiredMood: 2
+    _requiredMoodAmount: 1
+    _titleSize: 0
+    expandInEditor: 1
+  - _words: '"You just need to flip that switch, and the box will release a signal
+      we can use to find you and any other surivivors."'
+    _requiredMood: 0
+    _requiredMoodAmount: 0
+    _titleSize: 0
+    expandInEditor: 1
+  choices:
+  - _words: Flip the switch.
+    _requiredMood: 0
+    _requiredMoodAmount: 0
+    _titleSize: 0
+    expandInEditor: 1
+    _link: {fileID: 11400000, guid: e9712f1f43ced284cbea92256c33f4e2, type: 2}
+    _mood: 0
+    _moodMod: 0
+    _altMood: 0
+    _altMoodReq: 0
+    _altLink: {fileID: 0}
+  - _words: '"I don''t think I should flip this."'
+    _requiredMood: 0
+    _requiredMoodAmount: 0
+    _titleSize: 0
+    expandInEditor: 1
+    _link: {fileID: 11400000, guid: 560cc184d7a2a1740a44af2136440376, type: 2}
+    _mood: 0
+    _moodMod: 0
+    _altMood: 0
+    _altMoodReq: 0
+    _altLink: {fileID: 0}

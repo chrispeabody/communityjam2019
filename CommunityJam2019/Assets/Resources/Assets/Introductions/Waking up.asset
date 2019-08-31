@@ -1,0 +1,87 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc11c79e905d1854faf7ee7030929cdc, type: 3}
+  m_Name: Waking up
+  m_EditorClassIdentifier: 
+  beats:
+  - _words: '...'
+    _requiredMood: 0
+    _requiredMoodAmount: 0
+    _titleSize: 0
+    expandInEditor: 0
+  - _words: Suddenly, your head fills with color. The taste of copper assaults your
+      tongue. With throbbing temples, you open your eyes.
+    _requiredMood: 0
+    _requiredMoodAmount: 0
+    _titleSize: 0
+    expandInEditor: 0
+  - _words: You feel cool, but not cold. Your clothes are damp. And it's ... raining?
+    _requiredMood: 0
+    _requiredMoodAmount: 0
+    _titleSize: 0
+    expandInEditor: 0
+  - _words: The cloudy haze drifting through your mind clears away when a small object
+      nearby whirs to life;
+    _requiredMood: 0
+    _requiredMoodAmount: 0
+    _titleSize: 0
+    expandInEditor: 0
+  - _words: '"Hello? Is there anyone there?"'
+    _requiredMood: 0
+    _requiredMoodAmount: 0
+    _titleSize: 0
+    expandInEditor: 0
+  - _words: It sounds like a radio of some kind. You crawl along tall grass, feeling
+      for the source of the sound. A sharp pain shoots up your back, almost halting
+      you.
+    _requiredMood: 0
+    _requiredMoodAmount: 0
+    _titleSize: 0
+    expandInEditor: 0
+  - _words: '"Come in. Is anyone out there?"'
+    _requiredMood: 0
+    _requiredMoodAmount: 0
+    _titleSize: 0
+    expandInEditor: 1
+  - _words: Finally, your hands meet the small, warm device.
+    _requiredMood: 0
+    _requiredMoodAmount: 0
+    _titleSize: 0
+    expandInEditor: 0
+  - _words: '"Is anyone there? Hello?" What happens next is up to you:'
+    _requiredMood: 0
+    _requiredMoodAmount: 0
+    _titleSize: 0
+    expandInEditor: 1
+  choices:
+  - _words: Respond, "Yes, hello?"
+    _requiredMood: 0
+    _requiredMoodAmount: 0
+    _titleSize: 0
+    expandInEditor: 1
+    _link: {fileID: 11400000, guid: f289c7ac5daf990409a3bf697f57ee54, type: 2}
+    _mood: 0
+    _moodMod: 0
+    _altMood: 0
+    _altMoodReq: 0
+    _altLink: {fileID: 0}
+  - _words: Let it sit.
+    _requiredMood: 0
+    _requiredMoodAmount: 0
+    _titleSize: 0
+    expandInEditor: 1
+    _link: {fileID: 11400000, guid: 47a6a0f0ff1ed6c46bf83c57e997c132, type: 2}
+    _mood: 0
+    _moodMod: 0
+    _altMood: 0
+    _altMoodReq: 0
+    _altLink: {fileID: 0}

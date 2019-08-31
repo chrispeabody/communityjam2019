@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc11c79e905d1854faf7ee7030929cdc, type: 3}
+  m_Name: How long until you arrive
+  m_EditorClassIdentifier: 
+  beats:
+  - _words: '"Depending on your location..."'
+    _requiredMood: 0
+    _requiredMoodAmount: 0
+    _titleSize: 0
+    expandInEditor: 1
+  - _words: '"It could be 30 minutes, or 3 hours."'
+    _requiredMood: 0
+    _requiredMoodAmount: 0
+    _titleSize: 0
+    expandInEditor: 1
+  - _words: '"It''s probably best not to think about the wait."'
+    _requiredMood: 0
+    _requiredMoodAmount: 0
+    _titleSize: 0
+    expandInEditor: 1
+  choices:
+  - _words: '"Okay, I''ll start looking for it."'
+    _requiredMood: 0
+    _requiredMoodAmount: 0
+    _titleSize: 0
+    expandInEditor: 1
+    _link: {fileID: 11400000, guid: 5c8cd1c5748bb5143b08610c7ab27e89, type: 2}
+    _mood: 0
+    _moodMod: 0
+    _altMood: 0
+    _altMoodReq: 0
+    _altLink: {fileID: 0}

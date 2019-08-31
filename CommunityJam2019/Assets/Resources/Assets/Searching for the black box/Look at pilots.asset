@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc11c79e905d1854faf7ee7030929cdc, type: 3}
+  m_Name: Look at pilots
+  m_EditorClassIdentifier: 
+  beats:
+  - _words: You peer into the cockpit. Surprisingly, there are no bodies here. Just
+      two empty seats. A piece of metal on the control panel glows hot from the friction
+      of the crash.
+    _requiredMood: 0
+    _requiredMoodAmount: 0
+    _titleSize: 0
+    expandInEditor: 1
+  - _words: After perusing the room, you find nothing of note.
+    _requiredMood: 0
+    _requiredMoodAmount: 0
+    _titleSize: 0
+    expandInEditor: 1
+  choices:
+  - _words: Go back.
+    _requiredMood: 0
+    _requiredMoodAmount: 0
+    _titleSize: 0
+    expandInEditor: 1
+    _link: {fileID: 11400000, guid: dcc3c61be603c1b4aa6888e8efc6471d, type: 2}
+    _mood: 0
+    _moodMod: 0
+    _altMood: 0
+    _altMoodReq: 0
+    _altLink: {fileID: 0}

@@ -10,11 +10,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cc11c79e905d1854faf7ee7030929cdc, type: 3}
-  m_Name: page4test
+  m_Name: GAME_OVER
   m_EditorClassIdentifier: 
   beats:
-  - _words: You did it!
+  - _words: The End
     _requiredMood: 0
     _requiredMoodAmount: 0
-    expandInEditor: 0
-  choices: []
+    _titleSize: 1
+    expandInEditor: 1
+  choices:
+  - _words: View credits.
+    _requiredMood: 0
+    _requiredMoodAmount: 0
+    _titleSize: 0
+    expandInEditor: 1
+    _link: {fileID: 11400000, guid: 7ab3db8ab0867314b8061de68a63fafa, type: 2}
+    _mood: 0
+    _moodMod: 0
+    _altMood: 0
+    _altMoodReq: 0
+    _altLink: {fileID: 0}

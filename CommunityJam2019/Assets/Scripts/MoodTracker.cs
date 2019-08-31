@@ -27,10 +27,16 @@ public class MoodTracker {
 	}
 
 	public Dictionary<Mood,int> getMoods() {return _moods;}
+
+	public void clearMoods() {
+		_moods = new Dictionary<Mood,int>();
+	}
 }
 
 public enum Mood {
 	None,
+	Amused,
+	Appeased,
 	Agitated,
-	Appeased
+	Worried
 }

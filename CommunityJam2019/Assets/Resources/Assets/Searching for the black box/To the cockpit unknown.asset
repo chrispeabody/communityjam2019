@@ -10,37 +10,40 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cc11c79e905d1854faf7ee7030929cdc, type: 3}
-  m_Name: page1test
+  m_Name: To the cockpit unknown
   m_EditorClassIdentifier: 
   beats:
-  - _words: '...'
+  - _words: After a while of ignoring an immense pain in your leg, you make it to
+      where the cabin used to meet the cockpit.
     _requiredMood: 0
     _requiredMoodAmount: 0
+    _titleSize: 0
     expandInEditor: 1
-  - _words: Ah, I see you're awake!
+  - _words: The door to where the pilots had their last moments sits in front of you.
+      Just before the door, there are a series of storage drawers in a neat column,
+      somehow still intact.
     _requiredMood: 0
     _requiredMoodAmount: 0
-    expandInEditor: 0
-  - _words: Did you have any interesting dreams?
-    _requiredMood: 0
-    _requiredMoodAmount: 0
-    expandInEditor: 0
+    _titleSize: 0
+    expandInEditor: 1
   choices:
-  - _words: What? No.
+  - _words: Look through the cockpit door.
     _requiredMood: 0
     _requiredMoodAmount: 0
+    _titleSize: 0
     expandInEditor: 1
-    _link: {fileID: 11400000, guid: 2281296aa07ea9c4697d9928cc62417d, type: 2}
-    _mood: 1
-    _moodMod: 3
+    _link: {fileID: 11400000, guid: 950dff4a2b862834d83e057a3c1ca9ce, type: 2}
+    _mood: 0
+    _moodMod: 0
     _altMood: 0
     _altMoodReq: 0
     _altLink: {fileID: 0}
-  - _words: Well there was one.
+  - _words: Search the drawers.
     _requiredMood: 0
     _requiredMoodAmount: 0
-    expandInEditor: 0
-    _link: {fileID: 11400000, guid: 07efa431d9579494c98a5e8155732006, type: 2}
+    _titleSize: 0
+    expandInEditor: 1
+    _link: {fileID: 11400000, guid: dcc3c61be603c1b4aa6888e8efc6471d, type: 2}
     _mood: 0
     _moodMod: 0
     _altMood: 0

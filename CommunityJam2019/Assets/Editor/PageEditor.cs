@@ -5,14 +5,14 @@ using UnityEditor;
 
 [CustomEditor(typeof(Page))]
 public class PageEditor : Editor {
-
+	
     public override void OnInspectorGUI() {
-    	//base.OnInspectorGUI();
+    	EditorStyles.textArea.wordWrap = true;
 
     	serializedObject.Update();
     	Page page = (Page) target;
 
-    	EditorGUILayout.LabelField("Beats");
+    	EditorGUILayout.LabelField("Beats", EditorStyles.boldLabel);
 
     	Beat beatToRemove = null;
     	foreach(Beat beat in page.beats) {
@@ -27,13 +27,15 @@ public class PageEditor : Editor {
 	    			beatToRemove = beat;
 	    		}
 
-	    		beat.setWords(EditorGUILayout.TextArea(beat.getWords()));
+	    		beat.setWords(EditorGUILayout.TextArea(beat.getWords(), EditorStyles.textArea));
 	    		GUILayout.EndHorizontal();
 
 	    		GUILayout.BeginHorizontal();
 	    		beat.setRequiredMood((Mood)EditorGUILayout.EnumPopup("Required:", beat.getRequiredMood()));
 	    		beat.setRequiredMoodAmount(EditorGUILayout.IntField(beat.getRequiredMoodAmount()));
 	    		GUILayout.EndHorizontal();  
+
+	    		beat.setTitleSize(EditorGUILayout.Toggle("Title size?", beat.getTitleSize()));
 	    	}		
     	}
     	if (beatToRemove != null) {page.beats.Remove(beatToRemove);}
@@ -42,7 +44,7 @@ public class PageEditor : Editor {
     		page.beats.Add(new Beat(""));
     	}
 
-    	EditorGUILayout.LabelField("Choices");
+    	EditorGUILayout.LabelField("Choices", EditorStyles.boldLabel);
 
 		Choice choiceToRemove = null;
     	foreach(Choice choice in page.choices) {

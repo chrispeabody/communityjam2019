@@ -7,7 +7,8 @@ public class Beat {
 	[SerializeField] protected string _words;
 	[SerializeField] protected Mood _requiredMood;
 	[SerializeField] protected int _requiredMoodAmount;
-	public bool expandInEditor; // This is used only for the editor
+	[SerializeField] private bool _titleSize;
+	public bool expandInEditor = true; // This is used only for the editor
 
 	public Beat (string words) {
 		_words = words;
@@ -19,6 +20,8 @@ public class Beat {
 	public void setRequiredMood(Mood requiredMood) {_requiredMood = requiredMood;}
 	public int getRequiredMoodAmount() {return _requiredMoodAmount;}
 	public void setRequiredMoodAmount(int requiredMoodAmount) {_requiredMoodAmount = requiredMoodAmount;}
+	public bool getTitleSize() {return _titleSize;}
+	public void setTitleSize(bool titleSize) {_titleSize = titleSize;}
 }
 
 [System.Serializable]

@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class CanvasController : MonoBehaviour {
     // GameObjects & public stuff
     public GameObject _mainTextbox;
+    public GameObject _moodTextBox;
     public GameObject _option1Button;
     public GameObject _option2Button;
     public GameObject _option3Button;
@@ -21,6 +22,7 @@ public class CanvasController : MonoBehaviour {
     private List<Text> _optionList = new List<Text>();
 	private Text _words;
     private Page _page;
+    private Text _moodWords;
 
     // Other
     private SoundManager _soundManager;
@@ -37,6 +39,7 @@ public class CanvasController : MonoBehaviour {
     private Color _lastColor;
     private float _doubleStrikeBuffer = 0f;
     public SoundCollection _thunderSounds;
+    private Color _darkShade = new Color(0.05f, 0.05f, 0.05f, 1);
 
     // Start is called before the first frame update
     void Start() {
@@ -48,12 +51,16 @@ public class CanvasController : MonoBehaviour {
         _optionGOList.Add(_option3Button);
         _optionGOList.Add(_option4Button);
 
+        _moodWords = _moodTextBox.GetComponent<Text>();
+
         foreach (GameObject go in _optionGOList) {
         	_optionList.Add(go.GetComponentInChildren<Text>());
         }
 
         _soundManager = _soundManagerGO.GetComponent<SoundManager>();
 
+        _lightningBackground.color = _darkShade;
+        _rainBackground.color = _darkShade;
         updatePage(startingPage);
     }
 
@@ -107,11 +114,10 @@ public class CanvasController : MonoBehaviour {
             _page.choices.Remove(choice);
         }
 
-
         // UPDATE CURRENT DISPLAY
-    	_words.text = _page.beats[0].getWords();
-
-    	_currentBeat = 0;
+        _currentBeat = 0;
+    	_words.text = _page.beats[_currentBeat].getWords();
+        checkIfTitle();
     	_finalBeat = _page.beats.Count-1;
 
     	for (int i = 0; i < _page.choices.Count; i++) {
@@ -121,10 +127,10 @@ public class CanvasController : MonoBehaviour {
     	checkDisplayButtons();
     }
 
-
     private void nextBeat () {      
         _currentBeat++;
 
+        checkIfTitle();
     	_words.text = _page.beats[_currentBeat].getWords();
         if (_newBeatSound != null) {
     	   _soundManager.playSoundCollection(_newBeatSound);
@@ -133,9 +139,20 @@ public class CanvasController : MonoBehaviour {
     	checkDisplayButtons();
     }
 
+    private void checkIfTitle() {
+        if (_page.beats[_currentBeat].getTitleSize()) {
+            _words.fontSize = 400;
+            _words.color = new Color(1,0,0,1);
+        } else {
+            _words.fontSize = 200;
+            _words.color = new Color(1,1,1,1);
+        }
+    }
+
     private void checkDisplayButtons() {
     	if (_currentBeat == _finalBeat) {
     		for (int i = 0; i < _page.choices.Count; i++) {
+                _optionGOList[i].SetActive(false);
     			_optionGOList[i].SetActive(true);
     		}
     		for (int i = _page.choices.Count; i < 4; i++) {
@@ -161,6 +178,13 @@ public class CanvasController : MonoBehaviour {
     	if (nextPage != null) {
             if (choice.getMood() != Mood.None) {
                 _moodTracker.addToMood(choice.getMood(),choice.getMoodMod());
+                fadeTextInOut();
+                if (choice.getMoodMod() > 0) {
+                    _moodWords.text = "+";
+                    } else {
+                        _moodWords.text = "";
+                    }
+                _moodWords.text += choice.getMoodMod() + " " + choice.getMood();
             }
 
             if (_selectionSound != null) {
@@ -198,8 +222,8 @@ public class CanvasController : MonoBehaviour {
             }
 
             if (_curTimeForFlash <= 0) {
-                _lightningBackground.color = new Color(0.1f, 0.1f, 0.1f, 1);
-                _rainBackground.color = new Color(0.05f, 0.05f, 0.05f, 1);
+                _lightningBackground.color = _darkShade;
+                _rainBackground.color = _darkShade;
                 _isLightning = false;
                 _totTimeForFlash = Random.Range(0.5f, 0.8f);
                 _curTimeForFlash = _totTimeForFlash;
@@ -207,9 +231,41 @@ public class CanvasController : MonoBehaviour {
     	}
     }
 
+    public void fadeTextInOut() {
+        StartCoroutine(fadeRoutine());
+    }
+
+    private IEnumerator fadeRoutine() {
+        Color noColor = Color.clear;
+        Color fullColor = new Color(1, 0, 0, 1);
+        Vector3 normalPos = _moodTextBox.transform.position;
+        for (float timePassed = 0.01f; timePassed < 1; timePassed += Time.deltaTime)
+        {
+            _moodWords.color = Color.Lerp(noColor, Color.red, Mathf.Min(1, timePassed / 1));
+            yield return null;
+        }
+        yield return new WaitForSeconds(2);
+        for (float timePassed = 0.01f; timePassed < 1; timePassed += Time.deltaTime)
+        {
+            _moodWords.color = Color.Lerp(fullColor, Color.clear, Mathf.Min(1, timePassed / 1));
+            _moodTextBox.transform.Translate(Vector3.up);
+            yield return null;
+        }
+        _moodTextBox.transform.position = normalPos;
+    }
+
+    private IEnumerator waitFade() {
+        yield return new WaitForSeconds(2);
+    }
+
+    public void quitGame() {
+        Application.Quit();;
+    }
+
     // FOR TESTING
     public void returnToStart() {
     	updatePage(startingPage);
+        _moodTracker.clearMoods();
     }
 
     public Page getPage() {return _page;}
